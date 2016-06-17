@@ -2,7 +2,7 @@ public class LinkedList {
     public Node head;
 
     public LinkedList() {
-        System.out.println("LinkedList constructor called");
+        System.out.println("Initializing new LinkedList...");
     }
 
     public void insert(String data) {
