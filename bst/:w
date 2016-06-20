@@ -1,0 +1,87 @@
+// Java BST
+
+// FULL CRUD
+
+// *Create -> insert nodes into the tree based on numerical value of *score* attribute
+// Read -> find a node in the tree by name
+// Update
+// Delete
+
+class BST {
+    public Node root;
+
+    public BST(String name, int score) {
+        this.root = new Node(name, score);
+    }
+
+    public void insert(String name, int score) {
+        if (this.root.score < score) {
+            if (this.root.lchild == null) {
+                this.root.lchild = new Node(name, score);
+            } else {
+                insert(name, score, this.root.lchild);
+            }
+        } else {
+            if (this.root.rchild == null) {
+                this.root.rchild = new Node(name, score);
+            } else {
+                insert(name, score, this.root.rchild);
+            }
+        }
+    }
+
+    public void insert(String name, int score, Node currentNode) {
+        if (currentNode.score < score) {
+            if (currentNode.lchild == null) {
+                currentNode.lchild = new Node(name, score);
+            } else {
+                insert(name, score, currentNode.lchild);
+            }
+        } else {
+            if (currentNode.rchild == null) {
+                currentNode.rchild = new Node(name, score);
+            } else {
+                insert(name, score, currentNode.rchild);
+            }
+        }
+    }
+
+    public Node find(String name) {
+        if (this.root.name == name) {
+            return this.root;
+        } else {
+            return find(name, this.root);
+        }
+    }
+
+    public Node find(String name, Node currentNode) {
+        if (currentNode.name == name) {
+            return currentNode;
+        } else {
+            if (currentNode.rchild != null) {
+                return find(name, currentNode.rchild);
+            }
+            if (currentNode.lchild != null) {
+                return find(name, currentNode.lchild);
+            }
+            return null;
+        }
+    }
+
+    public static void main(String []args) {
+        BST bst = new BST("root node", 50);
+
+        bst.insert("node 1", 60);
+        bst.insert("node 2", 40);
+
+        Node root = bst.find("root node");
+        System.out.println("Name: " + root.name + ", Score: " + root.score);
+
+        Node node1 = bst.find("node 1");
+        System.out.println("Name: " + node1.name + ", Score: " + node1.score);
+
+        Node node2 = bst.find("node 2");
+        System.out.println("Name: " + node2.name + ", Score: " + node2.score);
+    }
+}
+
