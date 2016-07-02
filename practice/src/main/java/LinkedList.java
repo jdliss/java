@@ -90,8 +90,26 @@ public class LinkedList {
     private Node find(String data, Node currentNode) {
         if (currentNode.data == data) {
             return currentNode;
-        } else {
+        } else if (currentNode.next != null){
             return find(data, currentNode.next);
+        } else {
+            return null;
+        }
+    }
+
+    public int length() {
+        if (this.head.next != null) {
+            return 1 + length(this.head.next);
+        } else {
+            return 1;
+        }
+    }
+
+    private int length(Node currentNode) {
+        if (currentNode.next != null) {
+            return 1 + length(currentNode.next);
+        } else {
+            return 1;
         }
     }
 
