@@ -128,26 +128,4 @@ public class LinkedList {
             print(currentNode.next);
         }
     }
-
-    public static void main(String args[]) {
-        LinkedList list = new LinkedList("head node");
-
-        list.insert("node 1");
-        list.insert("node 2");
-        list.insert("node 3");
-
-        System.out.println("List before deletion:");
-        list.print();
-
-        list.delete("node 2");
-
-        System.out.println("\nList after deletion:");
-        list.print();
-
-        System.out.println("\nPopping off list");
-        System.out.println(list.pop().data);
-
-        System.out.println();
-        list.print();
-    }
 }
